@@ -13,8 +13,9 @@ struct ContentView<ViewModel: ViewModelProtocol>: View {
     var body: some View {
         VStack {
             Button("通信開始", action: {
-                print("通信開始")
-                viewModel.fetchItemData(itemName: "nike")
+                Task {
+                    try await viewModel.fetchItemData(itemName: "nike")
+                }
             })
             ItemsView(items: viewModel.items)
             Spacer()
