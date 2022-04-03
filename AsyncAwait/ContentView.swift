@@ -31,7 +31,7 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct ItemsView: View {
-    var items: [Item]
+    var items: [ItemsResult]
     
     var body: some View {
         List() {
@@ -44,20 +44,16 @@ struct ItemsView: View {
 
 
 struct ItemView: View {
-    var item: Item
-    var small: URL
-    var medium: URL
+    var item: ItemsResult
     
-    init(item: Item) {
+    init(item: ItemsResult) {
         self.item = item
-        small = URL(string: item.image.small)!
-        medium = URL(string: item.image.medium)!
     }
     
     var body: some View {
         HStack {
-            AsyncImage(url: small)
-            AsyncImage(url: medium)
+            Image(uiImage: item.image.smallImage)
+            Image(uiImage: item.image.mediumImage)
             VStack {
                 Text(item.name)
                 Text("\(item.price)")

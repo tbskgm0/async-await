@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct ItemSearchResultSet: Codable {
@@ -16,8 +17,7 @@ struct ItemSearchResultSet: Codable {
     }
 }
 
-struct Item: Codable, Identifiable {
-    let id = UUID()
+struct Item: Codable {
     var index: Int
     var name: String
     var image: ItemImage
@@ -34,4 +34,17 @@ struct Item: Codable, Identifiable {
 struct ItemImage: Codable {
     var small: String
     var medium: String
+}
+
+
+// 商品情報を保持する
+struct ItemsResult: Identifiable {
+    let id = UUID()
+    var name: String
+    var image: ItemImages
+    var price: Int
+}
+struct ItemImages {
+    var smallImage: UIImage
+    var mediumImage: UIImage
 }
